@@ -2434,7 +2434,7 @@ impl Build {
                     // get the 32i/32imac/32imc/64gc/64imac/... part
                     let arch = &target.full_arch[5..];
                     if arch.starts_with("64") {
-                        if matches!(target.os, "linux" | "freebsd" | "netbsd") {
+                        if matches!(target.os, "linux" | "freebsd" | "netbsd" | "mos") {
                             cmd.args.push(("-march=rv64gc").into());
                             cmd.args.push("-mabi=lp64d".into());
                         } else {
@@ -3479,6 +3479,7 @@ impl Build {
                         "riscv32-unknown-elf",
                         "riscv-none-embed",
                     ]),
+                    "riscv64gc-unknown-mos" => Some("riscv64-mos"),
                     "riscv64gc-unknown-linux-gnu" => Some("riscv64-linux-gnu"),
                     "riscv32gc-unknown-linux-gnu" => Some("riscv32-linux-gnu"),
                     "riscv64gc-unknown-linux-musl" => Some("riscv64-linux-musl"),
